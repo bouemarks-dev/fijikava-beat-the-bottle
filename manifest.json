@@ -1,0 +1,25 @@
+{
+  "name": "FijiKava \u2014 Beat the Bottle",
+  "short_name": "Beat the Bottle",
+  "description": "Beat an alcohol craving in 60 seconds. Relax without alcohol \u2014 by FijiKava.",
+  "id": "fijikava-beat-the-bottle",
+  "start_url": ".",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0a1a18",
+  "theme_color": "#0a1a18",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
