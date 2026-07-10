@@ -1369,7 +1369,8 @@ pinball:{
     t=Math.max(0,Math.min(f.len,t));
     const cx=f.px+dx*t,cy=f.py+dy*t;
     let nx=b.x-cx,ny=b.y-cy;const d=Math.hypot(nx,ny)||.001;
-    const minD=this.r+f.rad;
+    const fr=f.rad*(1-0.55*(t/f.len)); /* tapered: fat base, skinny tip */
+    const minD=this.r+fr;
     if(d>=minD)return;
     nx/=d;ny/=d;
     b.x=cx+nx*minD;b.y=cy+ny*minD;
@@ -1460,13 +1461,18 @@ pinball:{
     /* ramps — drawn as thick as their collision body */
     c.strokeStyle="#3c4f4a";c.lineWidth=this.rampRad*2;c.lineCap="round";
     this.ramps.forEach(s=>{c.beginPath();c.moveTo(s.ax,s.ay);c.lineTo(s.bx,s.by);c.stroke();});
-    /* flippers */
+    /* flippers — tapered: fat rounded base at the pivot, skinny rounded tip */
     [this.fL,this.fR].forEach(f=>{
+      const rb=f.rad, rt=f.rad*0.45, L=f.len;
       c.save();c.translate(f.px,f.py);c.rotate(f.thW);
-      c.fillStyle=f.phase===1||f.phase===2?"#7ff0e0":"#6ea016";
-      c.beginPath();c.roundRect(-6,-f.rad,f.len+12,f.rad*2,f.rad);c.fill();
+      c.fillStyle=f.phase===1||f.phase===2?"#7ff0e0":"#0d5c56";
+      c.beginPath();
+      c.arc(0,0,rb,Math.PI/2,Math.PI*1.5);
+      c.lineTo(L,-rt);
+      c.arc(L,0,rt,Math.PI*1.5,Math.PI/2,true);
+      c.lineTo(0,rb);
+      c.closePath();c.fill();
       c.restore();
-      c.beginPath();c.arc(f.px,f.py,5,0,7);c.fillStyle="#3c4f4a";c.fill();
     });
     /* bumpers */
     this.bumps.forEach(bp=>{
