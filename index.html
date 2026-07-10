@@ -120,6 +120,16 @@ h1 .killer{color:var(--acc)}
   color:var(--sky);font-family:'Oswald';font-size:15px;border-radius:20px;padding:15px;cursor:pointer;margin:6px 0 14px;
 }
 .surf-btn:active{transform:scale(.98)}
+.kava-cta{
+  display:flex;align-items:center;gap:14px;text-decoration:none;
+  background:linear-gradient(155deg,#0f3d38,#0a2320);border:1.5px solid var(--acc-deep);
+  border-radius:18px;padding:14px 16px;margin:2px 0 14px;
+}
+.kava-cta:active{transform:scale(.98)}
+.kava-cta .k-emo{font-size:30px;flex:none}
+.kava-cta .k-ttl{font-family:'Oswald';font-weight:700;font-size:15px;color:var(--acc);letter-spacing:.3px}
+.kava-cta .k-sub{font-size:11.5px;color:var(--cream-dim);margin-top:2px;line-height:1.4}
+.kava-cta .k-arrow{margin-left:auto;color:var(--acc);font-size:20px;flex:none}
 .how{background:var(--ink-2);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;margin:4px 0 14px;font-size:13px;color:var(--cream-dim);line-height:1.55}
 .how b{color:var(--cream)}
 .mile-h{font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--cream-dim);margin:6px 0 10px}
@@ -421,6 +431,13 @@ h1 .killer{color:var(--acc)}
 
     <div class="mile-h">Milestones</div>
     <div class="miles" id="miles"></div>
+
+    <div class="mile-h" style="margin-top:18px">The real thing</div>
+    <a class="kava-cta" href="https://fijikava.traseable.com/kavatracker" target="_blank" rel="noopener">
+      <span class="k-emo">🌿</span>
+      <span><span class="k-ttl">TRACE YOUR FIJIKAVA</span><div class="k-sub">Follow every batch back to the farm it grew on.</div></span>
+      <span class="k-arrow">→</span>
+    </a>
   </section>
 
   <!-- WHY -->
@@ -545,6 +562,11 @@ h1 .killer{color:var(--acc)}
       <p class="res-msg" id="resMsg"></p>
       <div class="fact-card" id="resFact"></div>
       <div id="resMile"></div>
+      <a class="kava-cta" href="https://fijikava.traseable.com/kavatracker" target="_blank" rel="noopener">
+        <span class="k-emo">🌿</span>
+        <span><span class="k-ttl">POUR A REAL FIJIKAVA</span><div class="k-sub">Trace every batch farm-to-cup. Calm. Relax. Sleep. Happy.</div></span>
+        <span class="k-arrow">→</span>
+      </a>
       <button class="ins-btn" id="btnShareKill">📤 SHARE THIS KILL</button>
       <button class="big-btn" data-nav="screen-home" style="margin-top:6px">DONE<small>BACK TO THE STATS</small></button>
       <button class="ghost-btn" id="btnAgain">STILL CRAVING? GO AGAIN ↺</button>
