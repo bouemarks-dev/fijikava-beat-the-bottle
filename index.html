@@ -1339,7 +1339,7 @@ pinball:{
     this.rampRad=Math.max(10,this.r*.95);
     const FR=this.rampRad; /* flippers share the ramp thickness — flush junction, no ledge, no gap */
     const mkFlip=(px,dir)=>{
-      const f={px,py:H*.862,dir,len:W*.072,rad:FR,rest:30*RAD,flipA:-38*RAD,phase:0,t0:0,th:30*RAD,thW:0,prevW:0,omega:0};
+      const f={px,py:H*.862,dir,len:W*.108,rad:FR,rest:30*RAD,flipA:-38*RAD,phase:0,t0:0,th:30*RAD,thW:0,prevW:0,omega:0};
       f.thW=dir===1?f.th:Math.PI-f.th;f.prevW=f.thW;
       return f;
     };
