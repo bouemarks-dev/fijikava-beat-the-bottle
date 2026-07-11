@@ -1,4 +1,4 @@
-const CACHE = "fijikava-beat-the-bottle-v1";
+const CACHE = "fijikava-beat-the-bottle-v2";
 const ASSETS = ["./", "./index.html", "./manifest.json", "./icon-192.png", "./icon-512.png", "./brand-mark.png", "./brand-mark.png"];
 
 self.addEventListener("install", e => {
