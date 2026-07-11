@@ -52,10 +52,13 @@ body::before{
 }
 /* signature FijiKava waves, low in the frame */
 body::after{
-  content:"";position:fixed;left:-10%;right:-10%;bottom:-2%;height:42%;pointer-events:none;z-index:0;opacity:.5;
+  content:"";position:fixed;left:-12%;right:-12%;bottom:-2%;height:44%;pointer-events:none;z-index:0;opacity:.55;
   background:
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320' preserveAspectRatio='none'%3E%3Cpath fill='%230C6360' fill-opacity='0.30' d='M0,224L60,213C120,203,240,181,360,181C480,181,600,203,720,208C840,213,960,203,1080,186C1200,169,1320,149,1380,138L1440,128L1440,320L0,320Z'/%3E%3Cpath fill='%2322B8B0' fill-opacity='0.10' d='M0,256L80,245C160,235,320,213,480,213C640,213,800,235,960,240C1120,245,1280,235,1360,229L1440,224L1440,320L0,320Z'/%3E%3C/svg%3E") no-repeat bottom/100% 100%;
+  animation:wavesway 16s ease-in-out infinite alternate;
 }
+@keyframes wavesway{from{transform:translate(-2%,4px)}to{transform:translate(2%,-4px)}}
+@media (prefers-reduced-motion:reduce){body::after{animation:none}.big-btn::after,.shop-card::after{animation:none}}
 #app{position:relative;z-index:2;height:100dvh;max-width:520px;margin:0 auto;display:flex;flex-direction:column}
 section{display:none;flex:1;flex-direction:column;padding:calc(env(safe-area-inset-top) + 26px) 24px calc(env(safe-area-inset-bottom) + 22px);overflow-y:auto}
 section.active{display:flex}
@@ -151,6 +154,48 @@ h1 .killer{color:var(--acc)}
 .trow .t-name{font-weight:700;flex:1}
 .trow .t-val{color:var(--mint);font-weight:700}
 .trow .t-drop{color:var(--cream-dim);font-size:12px}
+
+/* ---------- HUB LAYOUT + BOTTOM NAV ---------- */
+.hub{padding-bottom:calc(env(safe-area-inset-bottom) + 96px)!important}
+.brand-txt{display:flex;flex-direction:column;gap:1px}
+.brand-word{font-family:'Fredoka';font-weight:600;font-size:13px;letter-spacing:.5px;color:var(--acc-bright)}
+.brand-word::first-letter{color:var(--acc)}
+.brand .display{font-size:clamp(24px,7vw,32px);margin:0}
+.hero-sub{font-size:12.5px;color:var(--cream-dim);font-weight:300;margin-top:14px;letter-spacing:.2px}
+.hub-title{font-family:'Fredoka';font-weight:600;font-size:clamp(26px,8vw,34px);letter-spacing:-.5px;margin:6px 0 22px}
+.hub-title .killer{color:var(--acc)}
+#botnav{
+  position:fixed;left:50%;transform:translateX(-50%);bottom:0;z-index:40;width:100%;max-width:520px;
+  display:none;grid-template-columns:repeat(3,1fr);gap:4px;
+  padding:8px 14px calc(env(safe-area-inset-bottom) + 10px);
+  background:linear-gradient(180deg,rgba(6,18,15,.2),rgba(6,18,15,.92) 55%);backdrop-filter:blur(18px);
+  border-top:1px solid var(--line);
+}
+#botnav.show{display:grid}
+.nav-item{display:flex;flex-direction:column;align-items:center;gap:3px;background:none;border:none;cursor:pointer;padding:8px 0;border-radius:14px;transition:background .2s}
+.nav-ico{font-size:21px;filter:grayscale(.5) opacity(.6);transition:filter .2s,transform .2s}
+.nav-lbl{font-family:'Fredoka';font-weight:500;font-size:11px;letter-spacing:.4px;color:var(--cream-dim);transition:color .2s}
+.nav-item.active .nav-ico{filter:none;transform:translateY(-1px) scale(1.08)}
+.nav-item.active .nav-lbl{color:var(--acc-bright)}
+.nav-item.active{background:rgba(34,184,176,.08)}
+
+/* ---------- SHOP / FIJIKAVA HUB ---------- */
+.shop-hero{text-align:center;padding:6px 4px 20px}
+.shop-logo{width:96px;height:96px;border-radius:24px;filter:drop-shadow(0 12px 34px rgba(34,184,176,.4));margin-bottom:16px}
+.shop-tagline{font-family:'Inter';font-weight:300;font-size:13px;letter-spacing:4px;text-transform:uppercase;color:var(--acc-bright);margin-bottom:16px}
+.shop-lead{font-size:14px;line-height:1.65;font-weight:300;color:var(--cream-dim);max-width:340px;margin:0 auto}
+.shop-card{
+  display:flex;align-items:center;gap:15px;text-decoration:none;
+  background:linear-gradient(150deg,var(--acc),#0E8C86);border:1px solid rgba(255,255,255,.15);
+  border-radius:20px;padding:18px;margin-bottom:12px;position:relative;overflow:hidden;
+  box-shadow:0 18px 44px -14px rgba(34,184,176,.5)}
+.shop-card::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;transform:skewX(-20deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);animation:sheen 5s ease-in-out infinite}
+.shop-card:active{transform:scale(.98)}
+.shop-card .k-emo{font-size:32px;flex:none}
+.shop-card .k-ttl{font-family:'Fredoka';font-weight:600;font-size:16px;color:#052420;letter-spacing:.2px}
+.shop-card .k-sub{font-size:11.5px;color:rgba(5,36,32,.75);margin-top:3px;line-height:1.4;font-weight:500}
+.shop-card .k-arrow{margin-left:auto;color:#052420;font-size:22px;flex:none}
+.shop-link{display:block;text-align:center;color:var(--acc-bright);font-family:'Fredoka';font-weight:500;font-size:14px;text-decoration:none;padding:16px;margin-top:4px}
 
 /* ---------- RATE ---------- */
 .rate-head{margin:4vh 0 6px;font-size:clamp(22px,6.4vw,28px)}
@@ -410,47 +455,69 @@ h1 .killer{color:var(--acc)}
 </div>
 <div id="app">
 
-  <!-- HOME -->
-  <section id="screen-home" class="active">
-    <div class="brand"><img class="brand-ico" src="brand-mark.png" alt=""><h1 class="display">STAY<br><span class="killer">DRY</span></h1><button class="mute-btn" id="btnMute">🔊</button></div>
-    <p class="tag">An urge is a wave. Give it 60 seconds and let it pass.</p>
+  <!-- HUB: RESET -->
+  <section id="screen-home" class="active hub">
+    <div class="brand"><img class="brand-ico" src="brand-mark.png" alt=""><div class="brand-txt"><div class="brand-word">FijiKava</div><h1 class="display">STAY <span class="killer">DRY</span></h1></div><button class="mute-btn" id="btnMute">🔊</button></div>
 
     <div class="hero-stat">
       <span class="hero-moon">🌙</span>
       <div class="hero-num" id="stStreak">0</div>
       <div class="hero-lbl">night dry streak</div>
-    </div>
-    <div class="stat-row">
-      <div class="stat crushed"><div class="num" id="stCrushed">0</div><div class="lbl">Urges ridden out</div></div>
-      <div class="stat money"><div class="num" id="stMoney">$0</div><div class="lbl">Saved</div></div>
-      <div class="stat cals"><div class="num" id="stCals">0</div><div class="lbl">Calories dodged</div></div>
+      <div class="hero-sub" id="heroSub">An urge is a wave — ride it out.</div>
     </div>
 
     <button class="big-btn" id="btnStart">AN URGE JUST HIT<small>60-SECOND RESET</small><span class="pulse-ring"></span></button>
     <button class="surf-btn" id="btnSurfHome">🌊 RIDE THE WAVE — 10-MIN SURF</button>
 
-    <div style="display:flex;gap:8px">
+    <div class="how"><b>THE RESET — Notice it. Ride it. Let it pass.</b><br>Rate the urge, ride it out with 60 seconds of a gentle two-thumb game that quiets the imagery a craving runs on, then rate it again. Then pour a kava, not a drink. 🍵</div>
+  </section>
+
+  <!-- HUB: PROGRESS -->
+  <section id="screen-progress" class="hub">
+    <h2 class="hub-title">YOUR <span class="killer">PROGRESS</span></h2>
+    <div class="stat-row">
+      <div class="stat crushed"><div class="num" id="stCrushed">0</div><div class="lbl">Urges ridden out</div></div>
+      <div class="stat money"><div class="num" id="stMoney">$0</div><div class="lbl">Saved</div></div>
+      <div class="stat cals"><div class="num" id="stCals">0</div><div class="lbl">Calories dodged</div></div>
+    </div>
+    <div style="display:flex;gap:10px;margin-bottom:6px">
       <button class="ins-btn" id="btnInsights" style="flex:1.3">📊 MY PATTERNS</button>
       <button class="ins-btn" id="btnWhy" style="flex:1">🎯 MY WHY</button>
     </div>
-
-    <div class="how"><b>THE RESET — Notice it. Ride it. Let it pass.</b><br>Notice the urge by rating it. Ride it out with 60 seconds of a gentle two-thumb game that occupies both sides of your brain and quiets the imagery a craving runs on. See how far it's dropped. Then pour a kava, not a drink. 🍵</div>
-
     <div id="byTypeWrap" style="display:none">
       <div class="mile-h">Your cravings, by type</div>
       <div id="byType"></div>
     </div>
-
     <div class="mile-h">Milestones</div>
     <div class="miles" id="miles"></div>
+  </section>
 
-    <div class="mile-h" style="margin-top:18px">The real thing</div>
-    <a class="kava-cta" href="https://fijikava.traseable.com/kavatracker" target="_blank" rel="noopener">
-      <span class="k-emo">🌿</span>
-      <span><span class="k-ttl">TRACE YOUR FIJIKAVA</span><div class="k-sub">Follow every batch back to the farm it grew on.</div></span>
+  <!-- HUB: FIJIKAVA (shop / brand) -->
+  <section id="screen-shop" class="hub">
+    <div class="shop-hero">
+      <img class="shop-logo" src="brand-mark.png" alt="">
+      <div class="shop-tagline">Calm · Relax · Sleep · Happy</div>
+      <p class="shop-lead">The night routine that replaces alcohol. Certified Noble Kava, traditionally used in the Pacific for 3,000 years to calm the nerves — without the poison or the hangover.</p>
+    </div>
+    <a class="shop-card" href="https://fijikava.com" target="_blank" rel="noopener">
+      <span class="k-emo">🍵</span>
+      <span><span class="k-ttl">SHOP FIJIKAVA CALM</span><div class="k-sub">Noble kava effervescent micro tablets. Dissolve or chew.</div></span>
       <span class="k-arrow">→</span>
     </a>
+    <a class="kava-cta" href="https://fijikava.traseable.com/kavatracker" target="_blank" rel="noopener">
+      <span class="k-emo">🌿</span>
+      <span><span class="k-ttl">TRACE YOUR KAVA</span><div class="k-sub">Follow every batch back to the farm it grew on.</div></span>
+      <span class="k-arrow">→</span>
+    </a>
+    <a class="shop-link" href="https://fijikava.com" target="_blank" rel="noopener">Visit fijikava.com →</a>
   </section>
+
+  <!-- BOTTOM NAV -->
+  <nav id="botnav">
+    <button class="nav-item active" data-hub="screen-home"><span class="nav-ico">🌊</span><span class="nav-lbl">Reset</span></button>
+    <button class="nav-item" data-hub="screen-progress"><span class="nav-ico">📈</span><span class="nav-lbl">Progress</span></button>
+    <button class="nav-item" data-hub="screen-shop"><span class="nav-ico">🍵</span><span class="nav-lbl">FijiKava</span></button>
+  </nav>
 
   <!-- WHY -->
   <section id="screen-why">
@@ -744,19 +811,26 @@ const MILESTONES=[
 /* ---------- navigation ---------- */
 const show=id=>{
   document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
+  const el=document.getElementById(id);el.classList.add("active");
   if(id==="screen-pick")renderPicker();
   if(id==="screen-insights")renderInsights();
   if(id==="screen-rate"){curType="drink";curTrigger=null;setRateStep(2);}
+  if(id==="screen-home"||id==="screen-progress")renderHome();
+  /* bottom nav shows only on hub screens, and tracks the active tab */
+  const isHub=el.classList.contains("hub");
+  botnav.classList.toggle("show",isHub);
+  if(isHub){el.scrollTop=0;document.querySelectorAll(".nav-item").forEach(n=>n.classList.toggle("active",n.dataset.hub===id));}
 };
 function showFact(){rateFact.innerHTML="<b>🌿 GOOD TO KNOW</b><br>"+randFact(curType);}
-document.querySelectorAll("[data-nav]").forEach(b=>b.addEventListener("click",()=>{show(b.dataset.nav);if(b.dataset.nav==="screen-home")renderHome();}));
+document.querySelectorAll("[data-nav]").forEach(b=>b.addEventListener("click",()=>show(b.dataset.nav)));
+document.querySelectorAll(".nav-item").forEach(b=>b.addEventListener("click",()=>{buzz(10);show(b.dataset.hub);}));
 
 /* ---------- home ---------- */
 function renderHome(){
   stStreak.textContent=S.streak; stCrushed.textContent=S.crushed;
   stMoney.textContent="$"+(S.crushed*12);           /* ~one drink avoided per urge ridden out */
   stCals.textContent=S.crushed*150;
+  heroSub.textContent = S.streak>=1 ? `${S.streak} night${S.streak>1?"s":""} strong — keep the wave going.` : "An urge is a wave — ride it out.";
   miles.innerHTML=MILESTONES.map(m=>
     `<div class="mile ${S.milestones.includes(m.id)?"won":""}"><div class="ico">${m.ico}</div><div class="m-lbl">${m.lbl}</div></div>`).join("");
   const byT={};
@@ -769,6 +843,7 @@ function renderHome(){
   }).join("");
 }
 renderHome();
+botnav.classList.add("show");   /* Reset hub is active on load */
 
 /* ---------- insights ---------- */
 btnInsights.addEventListener("click",()=>{buzz(12);show("screen-insights");});
